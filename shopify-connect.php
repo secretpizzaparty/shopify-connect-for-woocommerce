@@ -28,12 +28,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-function shopify_wc_connect_remove_buy_buttons() {
-  remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
-  remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
-}
-add_action( 'init', 'shopify_wc_connect_remove_buy_buttons' );
-
 function shopify_wc_connect_meta_box() {
     require_once( 'inc/metabox.php' );
     new create_shopify_meta_box();
@@ -42,10 +36,6 @@ function shopify_wc_connect_meta_box() {
 add_action( 'load-post-new.php', 'shopify_wc_connect_meta_box' );
 add_action( 'load-post.php', 'shopify_wc_connect_meta_box' );
 
-
-function shopify_wc_connect_add_shopify_buttons() {
-    echo '<p>';
-    echo do_shortcode( get_post_meta( get_the_ID(), '_shopify_embed_code', true ) );
-    echo '</p>';
+if ( ! is_admin() ) {
+    require_once( 'inc/front-end.php' );
 }
-add_action( 'woocommerce_single_product_summary', 'shopify_wc_connect_add_shopify_buttons', 20 );
