@@ -21,11 +21,8 @@ class Shopify_WC_Connect_Meta_Box {
 	}
 
 	public function save( $post_id ) {
-		if ( array_key_exists('shopify_embed_code', $_POST ) ) {
-			update_post_meta( $post_id,
-				'_shopify_embed_code',
-				$_POST['shopify_embed_code']
-			);
+		if ( ! empty( $_POST ) && ! empty( $_POST['shopify_embed_code'] ) ) {
+			update_post_meta( $post_id, '_shopify_embed_code', sanitize_text_field( $_POST['shopify_embed_code'] ) );
 		}
 	}
 
