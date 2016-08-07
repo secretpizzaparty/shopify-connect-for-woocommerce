@@ -36,7 +36,7 @@ add_action( 'init', 'shopify_wc_connect_init' );
 
 function shopify_wc_connect_load_dependencies() {
 	require_once( 'inc/wc-hooks.php' );
-	require_once( 'product-type.php' );
+	require_once( 'inc/product-type.php' );
 
 	if ( is_admin() ) {
 		add_action( 'all_admin_notices', 'shopify_wc_connect_requirements_notice' );
