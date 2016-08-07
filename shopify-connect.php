@@ -40,6 +40,7 @@ if ( is_admin() ) {  //do nothing for front end requests
 }
 
 function shopify_connect_meta_box() {
+    require_once( 'inc/metabox.php' );
     new create_shopify_meta_box();
 }
 
