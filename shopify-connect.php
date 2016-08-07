@@ -36,7 +36,7 @@ function remove_woocommerce_buy_buttons() {
 add_action( 'init', 'remove_woocommerce_buy_buttons' );
 
 /* Create metabox to store embed code */
-if ( is_admin()) {  //do nothing for front end requests
+if ( is_admin() ) {  //do nothing for front end requests
     add_action( 'load-post-new.php', 'shopify_connect_meta_box' );
     add_action( 'load-post.php', 'shopify_connect_meta_box' );
 }
