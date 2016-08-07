@@ -38,9 +38,22 @@ function shopify_wc_connect_meta_box() {
     new Shopify_WC_Connect_Meta_Box();
 }
 
-add_action( 'load-post-new.php', 'shopify_wc_connect_meta_box' );
-add_action( 'load-post.php', 'shopify_wc_connect_meta_box' );
+if ( is_admin() ) {
+	add_action( 'all_admin_notices', 'shopify_wc_connect_requirements_notice' );
+	add_action( 'load-post-new.php', 'shopify_wc_connect_meta_box' );
+	add_action( 'load-post.php', 'shopify_wc_connect_meta_box' );
+} else {
+	require_once( 'inc/front-end.php' );
+}
 
-if ( ! is_admin() ) {
-    require_once( 'inc/front-end.php' );
+function shopify_wc_connect_requirements_notice() {
+	if ( ! defined( 'WC_VERSION' )
+	     || -1 === version_compare( WC_VERSION, 2.0 )
+	     || ! class_exists( 'Shopify_ECommerce_Plugin' )
+	     || -1 === version_compare( Shopify_ECommerce_Plugin::VERSION, 1.0 )
+	) {
+		echo '<div id="message" class="error">';
+		echo '<p>' . sprintf( __( 'Shopify Connect for WooCommerce - This plugin requires <em>WooCommerce</em> version 2.0 or higher and <em>Shopify eCommerce Plugin - Shopping Cart</em> version 1.0 or higher to function properly. Please make sure to <a href="%s">install/update</a> those plugins.', 'shopify-wc-connect' ), admin_url( 'plugins.php' ) ) . '</p>';
+		echo '</div>';
+	}
 }
