@@ -32,7 +32,7 @@ class Shopify_WC_Connect_Meta_Box {
 	public function render_form( $post ) {
 		?>
 		<?php $value = get_post_meta( $post->ID, '_shopify_embed_code', true ); ?>
-		<textarea class="widefat" cols="50" rows="5" name="shopify_embed_code" id="shopify_embed_code"/><?php if ( isset ( $value ) ) echo $value; ?></textarea>
+		<textarea class="widefat" cols="50" rows="5" name="shopify_embed_code" id="shopify_embed_code"/><?php if ( isset( $value ) ) echo esc_textarea( $value ); ?></textarea>
 		<?php
 	}
 }
