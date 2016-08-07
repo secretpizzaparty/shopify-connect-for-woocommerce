@@ -30,7 +30,7 @@
 
 function shopify_wc_connect_meta_box() {
     require_once( 'inc/metabox.php' );
-    new create_shopify_meta_box();
+    new Shopify_WC_Connect_Meta_Box();
 }
 
 add_action( 'load-post-new.php', 'shopify_wc_connect_meta_box' );

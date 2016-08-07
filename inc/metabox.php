@@ -1,6 +1,6 @@
 <?php
 
-class create_shopify_meta_box {
+class Shopify_WC_Connect_Meta_Box {
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
