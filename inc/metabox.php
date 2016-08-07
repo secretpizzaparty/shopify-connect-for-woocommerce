@@ -7,17 +7,18 @@ class Shopify_WC_Connect_Meta_Box {
 	}
 
 	public function add_meta_box( $post_type ) {
-		$post_types = 'product';
-		if ( $post_types = 'product') {
-			add_meta_box(
-				'shopify_embed_code',
-				'Shopify Embed Code',
-				array( $this, 'render_form'),
-				$post_type,
-				'side',
-				'low'
-			);
+		if ( 'product' !== $post_type ) {
+			return;
 		}
+
+		add_meta_box(
+			'shopify_embed_code',
+			'Shopify Embed Code',
+			array( $this, 'render_form'),
+			$post_type,
+			'side',
+			'low'
+		);
 	}
 
 	public function save( $post_id ) {
