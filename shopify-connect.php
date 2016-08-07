@@ -51,5 +51,3 @@ function add_shopify_buttons() {
     echo '</p>';
 }
 add_action( 'woocommerce_single_product_summary', 'add_shopify_buttons', 20 );
-
-?>
