@@ -28,6 +28,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+function shopify_wc_connect_init() {
+	load_plugin_textdomain( 'shopify-wc-connect' );
+}
+add_action( 'init', 'shopify_wc_connect_init' );
+
 function shopify_wc_connect_meta_box() {
     require_once( 'inc/metabox.php' );
     new Shopify_WC_Connect_Meta_Box();
