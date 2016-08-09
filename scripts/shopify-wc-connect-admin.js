@@ -2,21 +2,7 @@ jQuery( document ).ready( function( $ ){
 	var $add_button = $( '#shopify-wc-connect-add-shortcode' ),
 		$remove_button = $( '#shopify-wc-connect-clear-shortcode' ),
 		shortcode_textarea_id = 'shopify-wc-connect-shortcode',
-		$shortcode_textarea = $( '#' + shortcode_textarea_id ),
-		$current_shortcode_value = $shortcode_textarea.val();
-
-	// $shortcode_textarea.on( 'propertychange', function() {
-	// 	console.log( 'change' );
-	// 	var $this = $(this);
-	// 	var currentVal = $shortcode_textarea.val();
-	// 	if ( currentVal == oldVal ) {
-	// 		return; // prevent multiple simultaneous triggers
-	// 	}
-	//
-	// 	console.log( '1' );
-	// 	oldVal = currentVal;
-	// 	$this.val( $.trim( currentVal ) );
-	// });
+		$shortcode_textarea = $( '#' + shortcode_textarea_id );
 
 	// ensures value gets replaced and trimmed properly
 	$.valHooks.textarea = {
