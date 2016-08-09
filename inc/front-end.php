@@ -12,3 +12,15 @@ function shopify_wc_connect_single_product_summary() {
 	}
 }
 add_action( 'woocommerce_single_product_summary', 'shopify_wc_connect_single_product_summary', 40 );
+
+function shopify_wc_connect_takeover_cart_and_checkout() {
+	if ( is_cart() || is_checkout() || is_checkout_pay_page() ) {
+		wp_safe_redirect( get_permalink( wc_get_page_id( 'shop' ) ) . '#shopify_cart' );
+	}
+}
+add_action( 'parse_query', 'shopify_wc_connect_takeover_cart_and_checkout', 10 );
+
+function shopify_wc_connect_enqueue_scripts() {
+	wp_enqueue_script( 'shopify-wc-connect', plugins_url( '../scripts/shopify-wc-connect.js', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, true );
+}
+add_action( 'wp_enqueue_scripts', 'shopify_wc_connect_enqueue_scripts' );
