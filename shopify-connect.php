@@ -55,9 +55,9 @@ function shopify_wc_connect_admin_enqueue_scripts() {
 		return;
 	}
 
-	wp_enqueue_script( 'shopify-wc-connect', plugins_url( '/scripts/shopify-wc-connect.js', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, false );
-	wp_enqueue_style( 'shopify-wc-connect', plugins_url( '/assets/shopify-wc-connect.css', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, 'screen' );
-	wp_localize_script( 'shopify-wc-connect', 'shopify_wc_connect', array(
+	wp_enqueue_script( 'shopify-wc-connect-admin', plugins_url( '/scripts/shopify-wc-connect-admin.js', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, false );
+	wp_enqueue_style( 'shopify-wc-connect-admin', plugins_url( '/assets/shopify-wc-connect-admin.css', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, 'screen' );
+	wp_localize_script( 'shopify-wc-connect-admin', 'shopify_wc_connect', array(
 		'shortcode_type_not_supported' => __( 'Not supported with WooCommerce Integration.', 'shopify-wc-connect' ),
 	) );
 }
