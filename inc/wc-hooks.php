@@ -32,7 +32,7 @@ function shopify_wc_connect_product_data_panels() {
 			'data_type' => 'price',
 		) );
 
-		echo '<p>' .  __( 'For a consistent user experience, this price should match the product price on Shopify', 'shopify-wc-connect' ) . '</p>';
+		echo '<p>' .  __( 'For a consistent user experience, this price should match the product price on Shopify.', 'shopify-wc-connect' ) . '</p>';
 
 		echo '</div>';
 
@@ -40,12 +40,12 @@ function shopify_wc_connect_product_data_panels() {
 
 		?>
 
-		<div class="shopify-shortcode-buttons">
-			<button id="secp-add-shortcode" class="button secp-add-shortcode" data-editor-id="shopify-shortcode">
+		<div class="shopify-wc-connect-shortcode-buttons">
+			<button id="shopify-wc-connect-add-shortcode" class="button secp-add-shortcode" data-editor-id="shopify-wc-connect-shortcode">
 				<?php esc_html_e( 'Generate Embed Code', 'shopify-wc-connect' ); ?>
 			</button>
 
-			<button id="secp-clear-shortcode" class="button secp-clear-shortcode" data-editor-id="shopify-shortcode">
+			<button id="shopify-wc-connect-clear-shortcode" class="button secp-clear-shortcode" data-editor-id="shopify-wc-connect-shortcode">
 				<?php esc_html_e( 'Remove Embed Code', 'shopify-wc-connect' ); ?>
 			</button>
 		</div>
@@ -53,12 +53,26 @@ function shopify_wc_connect_product_data_panels() {
 
 		woocommerce_wp_textarea_input( array(
 			'class' => 'wp-editor-area',
-			'id' => 'shopify-shortcode',
+			'id' => 'shopify-wc-connect-shortcode',
 			'label' => __( 'Shopify Embed Code', 'shopify-wc-connect' ),
+			'custom_attributes' => array( 'readonly' => 'readonly' ),
+			'value' => get_post_meta( $thepostid, '_shopify_embed_code', true ),
 		) );
 
 		echo '</div>';
 		?>
 	</div>
 	<?php
+}
+
+add_action( 'woocommerce_process_product_meta_shopify', 'shopify_wc_connect_process_product_meta' );
+function shopify_wc_connect_process_product_meta( $post_id ) {
+	if ( empty( $_POST ) || empty( $_POST['shopify-wc-connect-shortcode'] ) ) {
+		return;
+	}
+
+	$shortcode = trim( wp_kses_post( $_POST['shopify-wc-connect-shortcode'] ) );
+	if ( has_shortcode( $shortcode, 'shopify' ) ) {
+		update_post_meta( $post_id, '_shopify_embed_code', $shortcode );
+	}
 }

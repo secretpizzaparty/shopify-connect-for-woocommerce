@@ -1,0 +1,13 @@
+.shopify-wc-connect-shortcode-buttons {
+    margin: 15px 0 5px 160px;
+}
+
+#shopify-wc-connect-shortcode {
+    min-height: 85px;
+    border-color: #ddd;
+    background: #efefef;
+}
+
+.shopify-wc-connect-modal-wrap .secp-modal-secondpage .secp-modal-content .secp-show-label:first-child {
+    opacity: 0.5;
+}

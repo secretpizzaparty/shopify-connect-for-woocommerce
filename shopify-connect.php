@@ -42,12 +42,24 @@ function shopify_wc_connect_load_dependencies() {
 
 	if ( is_admin() ) {
 		add_action( 'all_admin_notices', 'shopify_wc_connect_requirements_notice' );
+		add_action( 'admin_print_scripts-post-new.php', 'shopify_wc_connect_admin_enqueue_scripts' );
+		add_action( 'admin_print_scripts-post.php', 'shopify_wc_connect_admin_enqueue_scripts' );
 	} else {
 		require_once( 'inc/front-end.php' );
 	}
 }
 
-}
+function shopify_wc_connect_admin_enqueue_scripts() {
+	global $post_type;
+	if ( 'product' !== $post_type ) {
+		return;
+	}
+
+	wp_enqueue_script( 'shopify-wc-connect', plugins_url( '/scripts/shopify-wc-connect.js', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, false );
+	wp_enqueue_style( 'shopify-wc-connect', plugins_url( '/assets/shopify-wc-connect.css', __FILE__ ), array(), SHOPIFY_WC_CONNECT_VERSION, 'screen' );
+	wp_localize_script( 'shopify-wc-connect', 'shopify_wc_connect', array(
+		'shortcode_type_not_supported' => __( 'Not supported with WooCommerce Integration.', 'shopify-wc-connect' ),
+	) );
 }
 
 function shopify_wc_connect_requirements_notice() {
