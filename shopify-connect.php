@@ -42,16 +42,12 @@ function shopify_wc_connect_load_dependencies() {
 
 	if ( is_admin() ) {
 		add_action( 'all_admin_notices', 'shopify_wc_connect_requirements_notice' );
-		add_action( 'load-post-new.php', 'shopify_wc_connect_meta_box' );
-		add_action( 'load-post.php', 'shopify_wc_connect_meta_box' );
 	} else {
 		require_once( 'inc/front-end.php' );
 	}
 }
 
-function shopify_wc_connect_meta_box() {
-	require_once( 'inc/metabox.php' );
-	new Shopify_WC_Connect_Meta_Box();
+}
 }
 
 function shopify_wc_connect_requirements_notice() {
