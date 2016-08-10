@@ -77,3 +77,29 @@ function shopify_wc_connect_requirements_notice() {
 		echo '</div>';
 	}
 }
+
+function shopify_wc_connect_redirect_admin_pages() {
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return;
+	}
+
+	$shopify_site = get_option( 'secp_shop', false );
+	if ( ! $shopify_site ) {
+		return;
+	}
+
+	$redirects = array(
+		'edit-shop_order' => 'admin/orders',
+		'edit-shop_coupon' => 'admin/discounts',
+		'woocommerce_page_wc-reports' => 'admin/reports',
+	);
+
+	$current_screen = get_current_screen()->id;
+
+	if ( ! empty( $redirects[$current_screen] ) ) {
+		$redirect_uri = esc_url_raw( 'https://' . trailingslashit( $shopify_site ) . $redirects[$current_screen] );
+		wp_redirect( $redirect_uri );
+		exit;
+	}
+}
+add_action( 'current_screen', 'shopify_wc_connect_redirect_admin_pages' );
