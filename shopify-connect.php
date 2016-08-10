@@ -60,6 +60,10 @@ function shopify_wc_connect_admin_enqueue_scripts() {
 	wp_localize_script( 'shopify-wc-connect-admin', 'shopify_wc_connect', array(
 		'shortcode_type_not_supported' => __( 'Not supported with WooCommerce Integration.', 'shopify-wc-connect' ),
 	) );
+
+	if ( function_exists( 'shopify_ecommerce_plugin' ) ) {
+		remove_action( 'media_buttons', array( shopify_ecommerce_plugin()->shortcode, 'media_buttons' ) );
+	}
 }
 
 function shopify_wc_connect_requirements_notice() {
