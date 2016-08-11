@@ -76,3 +76,20 @@ function shopify_wc_connect_process_product_meta( $post_id ) {
 		update_post_meta( $post_id, '_shopify_embed_code', $shortcode );
 	}
 }
+
+add_filter( 'woocommerce_product_settings', 'shopify_wc_connect_product_settings' );
+function shopify_wc_connect_product_settings( $settings ) {
+	$settings_to_search = $settings;
+	$settings_to_remove = array(
+		'woocommerce_cart_redirect_after_add',
+		'woocommerce_enable_ajax_add_to_cart',
+	);
+
+	foreach( $settings_to_search as $setting_key => $setting ) {
+		if ( in_array( $setting['id'], $settings_to_remove ) ) {
+			unset( $settings[$setting_key] );
+		}
+	}
+
+	return $settings;
+}
