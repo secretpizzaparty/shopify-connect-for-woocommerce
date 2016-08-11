@@ -97,6 +97,7 @@ function shopify_wc_connect_redirect_admin_pages() {
 			'tax' => 'admin/settings/taxes',
 			'shipping' => 'admin/settings/shipping',
 			'checkout' => 'admin/settings/checkout',
+			'account' => 'admin/settings/checkout',
 		),
 	);
 
