@@ -88,8 +88,33 @@ function shopify_wc_connect_product_settings( $settings ) {
 	foreach( $settings_to_search as $setting_key => $setting ) {
 		if ( in_array( $setting['id'], $settings_to_remove ) ) {
 			unset( $settings[$setting_key] );
+			continue;
 		}
 	}
 
 	return $settings;
+}
+
+add_filter( 'woocommerce_get_settings_pages', 'shopify_wc_connect_get_settings_pages' );
+function shopify_wc_connect_get_settings_pages( $settings_pages ) {
+	$settings_to_search = $settings_pages;
+	$setting_classes_to_remove = array(
+		'email' => 'WC_Settings_Emails',
+	);
+
+	foreach( $settings_to_search as $setting_key => $setting_class ) {
+		foreach( $setting_classes_to_remove as $id => $setting_class_to_remove ) {
+			if ( is_a( $setting_class, $setting_class_to_remove ) ) {
+				remove_filter( 'woocommerce_settings_tabs_array', array( $setting_class, 'add_settings_page' ), 20 );
+				remove_action( 'woocommerce_sections_' . $id, array( $setting_class, 'output_sections' ) );
+				remove_action( 'woocommerce_settings_' . $id, array( $setting_class, 'output' ) );
+				remove_action( 'woocommerce_settings_save_' . $id, array( $setting_class, 'save' ) );
+				remove_action( 'woocommerce_admin_field_email_notification', array( $setting_class, 'email_notification_setting' ) );
+				unset( $settings_pages[ $setting_key ] );
+				continue;
+			}
+		}
+	}
+
+	return $settings_pages;
 }
