@@ -93,12 +93,29 @@ function shopify_wc_connect_redirect_admin_pages() {
 		'edit-shop_order' => 'admin/orders',
 		'edit-shop_coupon' => 'admin/discounts',
 		'woocommerce_page_wc-reports' => 'admin/reports',
+		'woocommerce_page_wc-settings' => array(
+			'tax' => 'admin/settings/taxes',
+			'shipping' => 'admin/settings/shipping',
+			'checkout' => 'admin/settings/checkout',
+		),
 	);
 
 	$current_screen = get_current_screen()->id;
 
 	if ( ! empty( $redirects[$current_screen] ) ) {
-		$redirect_uri = esc_url_raw( 'https://' . trailingslashit( $shopify_site ) . $redirects[$current_screen] );
+		if ( is_array( $redirects[$current_screen] ) ) {
+			if ( ! empty( $_GET['tab'] ) && isset( $redirects[$current_screen][$_GET['tab']] ) ) {
+				$shopify_path = $redirects[$current_screen][$_GET['tab']];
+			}
+		} else {
+			$shopify_path = $redirects[$current_screen];
+		}
+
+		if ( ! isset( $shopify_path ) ) {
+			return;
+		}
+
+		$redirect_uri = esc_url_raw( 'https://' . trailingslashit( $shopify_site ) . $shopify_path );
 		wp_redirect( $redirect_uri );
 		exit;
 	}
