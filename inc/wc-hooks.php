@@ -118,3 +118,10 @@ function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 
 	return $settings_pages;
 }
+
+add_filter( 'manage_product_posts_columns', 'shopify_wc_connect_product_columns', 20 );
+function shopify_wc_connect_product_columns( $columns ) {
+	unset( $columns['is_in_stock'] );
+	return $columns;
+}
+
