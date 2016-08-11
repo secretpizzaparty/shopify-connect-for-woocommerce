@@ -98,18 +98,27 @@ function shopify_wc_connect_redirect_admin_pages() {
 			'shipping' => 'admin/settings/shipping',
 			'checkout' => 'admin/settings/checkout',
 			'account' => 'admin/settings/checkout',
+			'products' => array(
+				'inventory' => 'admin/products/inventory',
+			),
 		),
 	);
 
 	$current_screen = get_current_screen()->id;
 
-	if ( ! empty( $redirects[$current_screen] ) ) {
-		if ( is_array( $redirects[$current_screen] ) ) {
-			if ( ! empty( $_GET['tab'] ) && isset( $redirects[$current_screen][$_GET['tab']] ) ) {
-				$shopify_path = $redirects[$current_screen][$_GET['tab']];
+	if ( ! empty( $redirects[ $current_screen ] ) ) {
+		if ( is_array( $redirects[ $current_screen ] ) ) {
+			if ( ! empty( $_GET['tab'] ) && isset( $redirects[ $current_screen ][ $_GET['tab'] ] ) ) {
+				if ( is_array( $redirects[ $current_screen ][ $_GET['tab'] ] ) ) {
+					if ( ! empty( $_GET['section'] ) && isset( $redirects[ $current_screen ][ $_GET['tab'] ][ $_GET['section'] ] ) ) {
+						$shopify_path = $redirects[ $current_screen ][ $_GET['tab'] ][ $_GET['section'] ];
+					}
+				} else {
+					$shopify_path = $redirects[ $current_screen ][ $_GET['tab'] ];
+				}
 			}
 		} else {
-			$shopify_path = $redirects[$current_screen];
+			$shopify_path = $redirects[ $current_screen ];
 		}
 
 		if ( ! isset( $shopify_path ) ) {
