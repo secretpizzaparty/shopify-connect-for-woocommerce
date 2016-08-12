@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Shopify Connect for WooCommerce
  * Plugin URI:  https://secretpizza.party
- * Description: Connect your WooCommerce site with Shopify
+ * Description: Connect your WooCommerce store with your Shopify store
  * Version:     1.1
- * Author:      secret pizza party
+ * Author:      secret pizza party, jkudish
  * Author URI:  https://secretpizza.party
  * License:     GPLv2
  * Text Domain: shopify-connect
@@ -12,6 +12,7 @@
 
 /**
  * Copyright (c) 2016 secret pizza party (email : hey@secretpizza.party)
+ * Copyright (c) 2016 Spark Consulting Ltd. (email : info@sparkdev.io)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at

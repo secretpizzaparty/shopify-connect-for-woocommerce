@@ -1,13 +1,13 @@
 === Plugin Name ===
-Contributors: secretpizzaparty
+Contributors: secretpizzaparty, jkudish
 Tags: shopify, ecommerce, woocommerce
 Requires at least: 4.2
-Tested up to: 4.5.2
+Tested up to: 4.5.3
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Connect your WooCommerce site with Shopify.
+Connect your WooCommerce store with your Shopify store.
 
 == Description ==
 
@@ -21,6 +21,12 @@ Before installing this plugin make sure that have WooCommerce and the Shopify Wo
 2. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.1 =
+* Significant re-write and feature improvement
+* Tighter integration between WooCommerce and Shopify
+* Improved wp-admin integration with Shopify (better metabox display and shortcode capture, hiding irrelevant WooCommerce fields)
+* Improved checkout and cart integration
 
 = 1.0 =
 * Initial Version
