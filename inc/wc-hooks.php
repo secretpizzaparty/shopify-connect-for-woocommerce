@@ -10,7 +10,7 @@ add_filter( 'woocommerce_product_data_tabs', 'shopify_wc_connect_product_tabs', 
 function shopify_wc_connect_product_tabs( $tabs ) {
 	unset($tabs['shipping']);
 	$shopify_tab = array( 'shopify' => array(
-		'label'  => __( 'Shopify', 'shopify-wc-connect' ),
+		'label'  => __( 'General', 'shopify-wc-connect' ),
 		'target' => 'shopify_product_options',
 		'class'  => array( 'shopify_tab', 'show_if_shopify' ),
 	) );
