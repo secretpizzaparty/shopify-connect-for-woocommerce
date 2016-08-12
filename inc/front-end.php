@@ -15,7 +15,8 @@ add_action( 'woocommerce_single_product_summary', 'shopify_wc_connect_single_pro
 
 function shopify_wc_connect_takeover_cart_and_checkout() {
 	if ( is_cart() || is_checkout() || is_checkout_pay_page() ) {
-		wp_safe_redirect( get_permalink( wc_get_page_id( 'shop' ) ) . '#shopify_cart' );
+		wp_redirect( get_permalink( wc_get_page_id( 'shop' ) ) . '#shopify_cart' );
+		exit();
 	}
 }
 add_action( 'parse_query', 'shopify_wc_connect_takeover_cart_and_checkout', 10 );
