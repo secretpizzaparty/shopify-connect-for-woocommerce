@@ -44,6 +44,7 @@ function shopify_wc_connect_load_dependencies() {
 		add_action( 'all_admin_notices', 'shopify_wc_connect_requirements_notice' );
 		add_action( 'admin_print_scripts-post-new.php', 'shopify_wc_connect_admin_enqueue_scripts' );
 		add_action( 'admin_print_scripts-post.php', 'shopify_wc_connect_admin_enqueue_scripts' );
+		add_action( 'admin_print_scripts-edit.php', 'shopify_wc_connect_admin_enqueue_scripts' );
 	} else {
 		require_once( 'inc/front-end.php' );
 	}

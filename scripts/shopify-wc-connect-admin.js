@@ -47,4 +47,13 @@ jQuery( document ).ready( function( $ ){
 		e.preventDefault();
 		$shortcode_textarea.val('');
 	});
+
+	// remove some quick edit buttons
+	$( '#wpbody-content' ).on( 'click', '.editinline', function(){
+		setTimeout( function(){
+			$( '.shipping_class' ).closest( '.alignleft' ).hide();
+			$( '.stock_status' ).closest( '.alignleft' ).hide();
+			$( '.backorders' ).closest( '.alignleft' ).hide();
+		}, 0 );
+	});
 });
