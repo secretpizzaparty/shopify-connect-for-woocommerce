@@ -125,3 +125,7 @@ function shopify_wc_connect_product_columns( $columns ) {
 	return $columns;
 }
 
+add_filter( 'wc_tax_enabled', '__return_false' );
+add_filter( 'wc_product_weight_enabled', '__return_false' );
+add_filter( 'wc_product_dimensions_enabled', '__return_false' );
+add_filter( 'option_woocommerce_manage_stock', '__return_false' );
