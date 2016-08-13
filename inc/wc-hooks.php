@@ -28,11 +28,17 @@ function shopify_wc_connect_product_data_panels() {
 
 		woocommerce_wp_text_input( array(
 			'id' => '_regular_price',
-			'label' => __( 'Product price', 'shopify-wc-connect' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+			'label' => __( 'Regular price', 'woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 			'data_type' => 'price',
 		) );
 
 		echo '<p>' .  __( 'For a consistent user experience, this price should match the product price on Shopify.', 'shopify-wc-connect' ) . '</p>';
+
+		woocommerce_wp_text_input( array(
+			'id' => '_sale_price',
+			'label' => __( 'Sale price', 'woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+			'data_type' => 'price',
+		) );
 
 		echo '</div>';
 
