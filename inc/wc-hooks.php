@@ -67,13 +67,17 @@ function shopify_wc_connect_product_data_panels() {
 
 add_action( 'woocommerce_process_product_meta_shopify', 'shopify_wc_connect_process_product_meta' );
 function shopify_wc_connect_process_product_meta( $post_id ) {
-	if ( empty( $_POST ) || empty( $_POST['shopify-wc-connect-shortcode'] ) ) {
+	if ( empty( $_POST ) || ! isset( $_POST['shopify-wc-connect-shortcode'] ) ) {
 		return;
 	}
 
-	$shortcode = trim( wp_kses_post( $_POST['shopify-wc-connect-shortcode'] ) );
-	if ( has_shortcode( $shortcode, 'shopify' ) ) {
-		update_post_meta( $post_id, '_shopify_embed_code', $shortcode );
+	if ( empty( $_POST['shopify-wc-connect-shortcode'] ) ) {
+		delete_post_meta( $post_id, '_shopify_embed_code' );
+	} else {
+		$shortcode = trim( wp_kses_post( $_POST['shopify-wc-connect-shortcode'] ) );
+		if ( has_shortcode( $shortcode, 'shopify' ) ) {
+			update_post_meta( $post_id, '_shopify_embed_code', $shortcode );
+		}
 	}
 }
 
