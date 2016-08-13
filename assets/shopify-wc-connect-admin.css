@@ -11,3 +11,7 @@
 .shopify-wc-connect-modal-wrap .secp-modal-secondpage .secp-modal-content .secp-show-label:first-child {
     opacity: 0.5;
 }
+
+#advanced_product_data .hide_if_external {
+	display: none !important;
+}
