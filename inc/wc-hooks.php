@@ -99,6 +99,30 @@ function shopify_wc_connect_product_settings( $settings ) {
 	return $settings;
 }
 
+add_filter( 'woocommerce_general_settings', 'shopify_wc_connect_general_settings' );
+function shopify_wc_connect_general_settings( $settings ) {
+	$settings_to_search = $settings;
+	$settings_to_remove = array(
+		'woocommerce_default_country',
+		'woocommerce_allowed_countries',
+		'woocommerce_all_except_countries',
+		'woocommerce_specific_allowed_countries',
+		'woocommerce_ship_to_countries',
+		'woocommerce_specific_ship_to_countries',
+		'woocommerce_default_customer_address',
+		'woocommerce_calc_taxes',
+	);
+
+	foreach( $settings_to_search as $setting_key => $setting ) {
+		if ( in_array( $setting['id'], $settings_to_remove ) ) {
+			unset( $settings[$setting_key] );
+			continue;
+		}
+	}
+
+	return $settings;
+}
+
 add_filter( 'woocommerce_get_settings_pages', 'shopify_wc_connect_get_settings_pages' );
 function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 	$settings_to_search = $settings_pages;
