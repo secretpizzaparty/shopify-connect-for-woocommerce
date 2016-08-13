@@ -153,10 +153,18 @@ function shopify_wc_connect_product_columns( $columns ) {
 	return $columns;
 }
 
+add_filter( 'woocommerce_get_sections_products', 'shopify_wc_connect_get_sections_products' );
+function shopify_wc_connect_get_sections_products( $sections ) {
+	unset( $sections['downloadable'] );
+	return $sections;
+}
+
 add_action( 'wp_dashboard_setup', 'shopify_wc_connect_remove_dashboard_widget' );
 function shopify_wc_connect_remove_dashboard_widget() {
 	remove_meta_box( 'woocommerce_dashboard_status', 'dashboard', 'side' );
 }
+
+add_filter( 'woocommerce_downloadable_products_settings', '__return_empty_array' );
 
 add_filter( 'wc_tax_enabled', '__return_false' );
 add_filter( 'wc_product_weight_enabled', '__return_false' );
