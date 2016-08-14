@@ -32,7 +32,7 @@ function shopify_wc_connect_product_data_panels() {
 			'data_type' => 'price',
 		) );
 
-		echo '<p>' .  __( 'For a consistent user experience, this price should match the product price on Shopify.', 'shopify-wc-connect' ) . '</p>';
+		echo '<p>' .  __( 'The price here should match the price you\'ve set on Shopify.', 'shopify-wc-connect' ) . '</p>';
 
 		woocommerce_wp_text_input( array(
 			'id' => '_sale_price',
