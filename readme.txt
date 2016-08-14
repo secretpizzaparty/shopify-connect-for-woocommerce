@@ -7,11 +7,19 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Connect your WooCommerce store with your Shopify store.
+WooCommerce and Shopify go together like peanut butter and jelly.
 
 == Description ==
 
-WooCommerce and Shopify are both amazing ecommerce platforms. Why do you have to choose just one? Both do amazing things why not combine them together.
+I've never liked choosing one thing over another. When it comes to e-commence Shopify and WooCommerce are both great options.
+
+Shopify has all the connections. From selling directly on Facebook, Twitter and Pinterest and more amazing integrations via their app store. Their interface is easy to use and it’s a rock solid hosted platform.
+
+WooCommerce on the other hand has all the benefits of WordPress. Superior handling of blog posts/static content, ease of customizability and access to the large & amazing WordPress community.
+
+What if you could take the best features of both systems and mash them together. Well you can with Shopify Connect for WooCommerce. With SCWC you'll use Shopify as your backend and WooCommerce as your frontend. Our plugin basically sits in between the official Shopify WordPress plugin and WooCommence making everything work well together.
+
+No more having to make compromises, build your dream e-commerce shop today.
 
 == Installation ==
 
