@@ -15,3 +15,7 @@
 #advanced_product_data .hide_if_external {
 	display: none !important;
 }
+
+#woocommerce-product-data .hndle label:first-child {
+	border-right: 0;
+}
