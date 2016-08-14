@@ -78,6 +78,28 @@ function shopify_wc_connect_requirements_notice() {
 		echo '<div id="message" class="error">';
 		echo '<p>' . sprintf( __( 'Shopify Connect for WooCommerce - This plugin requires <em>WooCommerce</em> version 2.0 or higher and <em>Shopify eCommerce Plugin - Shopping Cart</em> version 1.0 or higher to function properly. Please make sure to <a href="%s">install/update</a> those plugins.', 'shopify-wc-connect' ), admin_url( 'plugins.php' ) ) . '</p>';
 		echo '</div>';
+		deactivate_plugins( __FILE__ );
+		return;
+	}
+
+	if ( ! defined( 'WC_VERSION' )
+	     || -1 === version_compare( WC_VERSION, 2.0 )
+	) {
+		echo '<div id="message" class="error">';
+		echo '<p>' . sprintf( __( 'Shopify Connect for WooCommerce - This plugin requires <em>WooCommerce</em> version 2.0 or higher and to function properly. Please make sure to <a href="%s">install/update</a> WooCommerce. We\'ve disabled Shopify Connect for WooCommerce in the mean time.', 'shopify-wc-connect' ), admin_url( 'plugins.php' ) ) . '</p>';
+		echo '</div>';
+		deactivate_plugins( __FILE__ );
+		return;
+	}
+
+	if ( ! class_exists( 'Shopify_ECommerce_Plugin' )
+         || -1 === version_compare( Shopify_ECommerce_Plugin::VERSION, 1.0 )
+	) {
+		echo '<div id="message" class="error">';
+		echo '<p>' . sprintf( __( 'Shopify Connect for WooCommerce - This plugin requires <em>Shopify eCommerce Plugin - Shopping Cart</em> version 1.0 or higher to function properly. Please make sure to <a href="%s">install/update</a> the Shopify plugin.  We\'ve disabled Shopify Connect for WooCommerce in the mean time.', 'shopify-wc-connect' ), admin_url( 'plugins.php' ) ) . '</p>';
+		echo '</div>';
+		deactivate_plugins( __FILE__ );
+		return;
 	}
 }
 
