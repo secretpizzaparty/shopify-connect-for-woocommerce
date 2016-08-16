@@ -108,8 +108,9 @@ function shopify_wc_connect_redirect_admin_pages() {
 		return;
 	}
 
+	// if we don't have a site we can use, then hide menus (in inc/wc-hooks.php) instead
 	$shopify_site = get_option( 'secp_shop', false );
-	if ( ! $shopify_site ) {
+	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) ) {
 		return;
 	}
 

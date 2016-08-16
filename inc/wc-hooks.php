@@ -136,6 +136,14 @@ function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 		'email' => 'WC_Settings_Emails',
 	);
 
+	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead of adding these tabs
+	$shopify_site = get_option( 'secp_shop', false );
+	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+		$setting_classes_to_remove['shipping'] = 'WC_Settings_Shipping';
+		$setting_classes_to_remove['checkout'] = 'WC_Settings_Payment_Gateways';
+		$setting_classes_to_remove['account'] = 'WC_Settings_Accounts';
+	}
+
 	foreach( $settings_to_search as $setting_key => $setting_class ) {
 		foreach( $setting_classes_to_remove as $id => $setting_class_to_remove ) {
 			if ( is_a( $setting_class, $setting_class_to_remove ) ) {
@@ -153,6 +161,36 @@ function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 	return $settings_pages;
 }
 
+
+function shopify_wc_connect_remove_admin_menu_items() {
+	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead
+	$shopify_site = get_option( 'secp_shop', false );
+	if ( $shopify_site && false === strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+		return;
+	}
+
+	$to_remove = array(
+		'edit.php?post_type=shop_order',
+		'edit.php?post_type=shop_coupon',
+		'wc-reports',
+	);
+
+	global $submenu;
+	foreach( $submenu as $section => $menu_items ) {
+		if ( $section !== 'woocommerce' ) {
+			continue;
+		}
+
+		foreach( $menu_items as $index => $submenu_item ) {
+			if ( in_array( $submenu_item[2], $to_remove ) ) {
+				unset( $submenu['woocommerce'][$index] );
+			}
+		}
+	}
+
+}
+add_action( 'admin_head', 'shopify_wc_connect_remove_admin_menu_items' );
+
 add_filter( 'manage_product_posts_columns', 'shopify_wc_connect_product_columns', 20 );
 function shopify_wc_connect_product_columns( $columns ) {
 	unset( $columns['is_in_stock'] );
@@ -162,6 +200,13 @@ function shopify_wc_connect_product_columns( $columns ) {
 add_filter( 'woocommerce_get_sections_products', 'shopify_wc_connect_get_sections_products' );
 function shopify_wc_connect_get_sections_products( $sections ) {
 	unset( $sections['downloadable'] );
+
+	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead of adding these tabs
+	$shopify_site = get_option( 'secp_shop', false );
+	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+		unset( $sections['inventory'] );
+	}
+
 	return $sections;
 }
 
