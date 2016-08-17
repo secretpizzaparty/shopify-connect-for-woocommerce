@@ -19,6 +19,8 @@ What if you could take the best features of both systems and mash them together.
 
 No more having to make compromises, build your dream e-commerce shop today.
 
+See the plugin in action on [shop.secretpizza.party](http://shop.secretpizza.party)
+
 # Credits
 
 This plugin is a joint venture between [secret pizza party](http://secretpizza.party) and [Spark Consulting](https://sparkdev.io).

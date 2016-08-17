@@ -21,6 +21,8 @@ What if you could take the best features of both systems and mash them together.
 
 No more having to make compromises, build your dream e-commerce shop today.
 
+See the plugin in action on http://shop.secretpizza.party
+
 == Installation ==
 
 Before installing this plugin make sure that have WooCommerce and the Shopify WordPress plugins installed.
