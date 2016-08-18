@@ -16,6 +16,14 @@
 	display: none !important;
 }
 
+#linked_product_data .options_group .form-field {
+	display: none;
+}
+
+#linked_product_data .options_group .form-field:first-child {
+	display: block;
+}
+
 #woocommerce-product-data .hndle label:first-child {
 	border-right: 0;
 }
