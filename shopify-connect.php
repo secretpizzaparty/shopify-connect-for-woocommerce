@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Shopify Connect for WooCommerce
  * Plugin URI:  https://secretpizza.party
- * Description: Connect your WooCommerce store with your Shopify store
+ * Description: WooCommerce and Shopify go together like peanut butter and jelly. Let us help you connect them together.
  * Version:     1.1
  * Author:      secret pizza party, jkudish
  * Author URI:  https://secretpizza.party
