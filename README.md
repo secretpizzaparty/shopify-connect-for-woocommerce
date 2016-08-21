@@ -4,8 +4,8 @@ Shopify Connect for WooCommerce is a WordPress plugin.
 
 WooCommerce and Shopify go together like peanut butter and jelly.
 
-This plugin requires WordPress version 4.2 or higher, WooCommerce 2.0 or higher and the Shopify eCommerce Plugin - Shopping Cart plugin version 1.0 or higher. 
-It has been tested up to the latest version of WordPress, 4.5.3.
+This plugin requires WordPress version 4.2 or higher, WooCommerce 2.0 or higher and the Shopify eCommerce Plugin - Shopping Cart plugin version 1.0 or higher.
+It has been tested up to the latest version of WordPress, 4.6.
 
 # Plugin Description
 
