@@ -2,12 +2,12 @@
 Contributors: secretpizzaparty, jkudish
 Tags: shopify, ecommerce, woocommerce
 Requires at least: 4.2
-Tested up to: 4.5.3
-Stable tag: 1.0
+Tested up to: 4.6
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce and Shopify go together like peanut butter and jelly.
+WooCommerce and Shopify go together like peanut butter and jelly. Let us help you connect them together.
 
 == Description ==
 
@@ -21,14 +21,24 @@ What if you could take the best features of both systems and mash them together.
 
 No more having to make compromises, build your dream e-commerce shop today.
 
-See the plugin in action on http://shop.secretpizza.party
+See the plugin in action on [shop.secretpizza.party](https://shop.secretpizza.party "secret pizza party shop")
 
 == Installation ==
 
-Before installing this plugin make sure that have WooCommerce and the Shopify WordPress plugins installed.
+Before installing this plugin make sure that have [WooCommerce](https://wordpress.org/plugins/woocommerce/ "WooCommerce") and the [Shopify](https://wordpress.org/plugins/shopify-ecommerce-shopping-cart/ "Shopify") plugins installed.
 
-1. Upload the plugin files to the `/wp-content/plugins/shopifyconnect` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/connect-shopify-and-woocommerce` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
+
+== Frequently Asked Questions ==
+
+= Why did you do this? =
+
+I wanted the ultimate e-commerce system and the easiest way I found to do this was to combine two already great systems.
+
+== Screenshots ==
+1. Insert your Shopify embed code into the familiar WooCommerce UI.
+2. That's it.
 
 == Changelog ==
 
