@@ -48,6 +48,12 @@ jQuery( document ).ready( function( $ ){
 		$shortcode_textarea.val('');
 	});
 
+	// remove duplicate fields
+	var $general_product_data_tab = $( '#general_product_data' );
+
+	$general_product_data_tab.find( '._regular_price_field' ).remove();
+	$general_product_data_tab.find( '._sale_price_field' ).remove();
+
 	// remove some quick edit buttons
 	$( '#wpbody-content' ).on( 'click', '.editinline', function(){
 		setTimeout( function(){
