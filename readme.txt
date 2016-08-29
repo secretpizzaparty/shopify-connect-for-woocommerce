@@ -3,7 +3,7 @@ Contributors: secretpizzaparty, jkudish
 Tags: shopify, ecommerce, woocommerce
 Requires at least: 4.2
 Tested up to: 4.6
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ I wanted the ultimate e-commerce system and the easiest way I found to do this w
 2. That's it.
 
 == Changelog ==
+
+= 1.2 =
+* Bug fix: prevent duplicate hidden price fields from creating false error on sale price
+* Bug fix: don't redirect to embeds.myshopify.com if that's the shop URL that gets set by the Shopify plugin
 
 = 1.1 =
 * Significant re-write and feature improvement
