@@ -138,7 +138,7 @@ function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 
 	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead of adding these tabs
 	$shopify_site = get_option( 'secp_shop', false );
-	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) || false !== strpos( $shopify_site, 'embeds.myshopify.com' ) ) {
 		$setting_classes_to_remove['shipping'] = 'WC_Settings_Shipping';
 		$setting_classes_to_remove['checkout'] = 'WC_Settings_Payment_Gateways';
 		$setting_classes_to_remove['account'] = 'WC_Settings_Accounts';
@@ -165,7 +165,7 @@ function shopify_wc_connect_get_settings_pages( $settings_pages ) {
 function shopify_wc_connect_remove_admin_menu_items() {
 	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead
 	$shopify_site = get_option( 'secp_shop', false );
-	if ( $shopify_site && false === strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+	if ( $shopify_site && false === strpos( $shopify_site, 'embeds.shopify.com' ) || false !== strpos( $shopify_site, 'embeds.myshopify.com' ) ) {
 		return;
 	}
 
@@ -203,7 +203,7 @@ function shopify_wc_connect_get_sections_products( $sections ) {
 
 	// if we have a site we can use, then redirect (in shopify-connect.php) will kick in instead of adding these tabs
 	$shopify_site = get_option( 'secp_shop', false );
-	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) ) {
+	if ( ! $shopify_site || false !== strpos( $shopify_site, 'embeds.shopify.com' ) || false !== strpos( $shopify_site, 'embeds.myshopify.com' ) ) {
 		unset( $sections['inventory'] );
 	}
 
